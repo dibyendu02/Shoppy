@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import ArrowLeftTwoToneIcon from '@mui/icons-material/ArrowLeftTwoTone';
 import ArrowRightTwoToneIcon from '@mui/icons-material/ArrowRightTwoTone';
@@ -10,6 +10,7 @@ const Container = styled.div`
     /* background-color: yellow; */
     display: flex;
     position: relative;
+    overflow: hidden;
 `
 const Arrow = styled.div`
     width: 50px;
@@ -27,6 +28,8 @@ const Arrow = styled.div`
     right: ${(props => props.direction === "right" && "20px")};
     cursor: pointer;
     opacity: 0.5;
+    z-index: 2;
+    :hover
 `
 const Slide = styled.div`
     width: 90vw;
@@ -39,6 +42,8 @@ const Slide = styled.div`
 const Wrapper = styled.div`
     height: 100%;
     display: flex;
+    transition: all 1.5s ease;
+    transform: translateX(${props => props.slideIndex * -105}vw);
     
 
 `
@@ -67,13 +72,21 @@ const Button = styled.button`
 `
 
 const Slider = () => {
+    const [slideIndex, setSlideIndex] = useState(0);
+    const handleClick=(direction)=>{
+        if(direction==="left"){
+            setSlideIndex(slideIndex >0 ? slideIndex-1 : 2);
+        }else{
+            setSlideIndex(slideIndex <2 ? slideIndex+1 : 0);
+        }
+    }
   return (
     <Container>
-        <Arrow direction="left">
+        <Arrow direction="left" onClick={() => handleClick("left")}>
             <ArrowLeftTwoToneIcon/>
         </Arrow>
         
-        <Wrapper>
+        <Wrapper slideIndex={slideIndex}>
             {sliderItems.map((items) => (
                 <Slide bg={items.bg}>
                 <ImageContainer>
@@ -89,7 +102,7 @@ const Slider = () => {
         </Wrapper>
         
 
-        <Arrow direction="right">
+        <Arrow direction="right" onClick={() => handleClick("right")}>
             <ArrowRightTwoToneIcon/>
         </Arrow>
     </Container>
