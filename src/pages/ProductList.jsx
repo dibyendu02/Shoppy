@@ -5,6 +5,7 @@ import Products from '../components/Products'
 import NewsLetter from '../components/NewsLetter'
 import Footer from '../components/Footer'
 import styled from 'styled-components'
+import { mobile } from '../responsive'
 
 const Title = styled.h3`
   font-size: 30px;
@@ -19,11 +20,15 @@ const FilterContainer = styled.div`
 `
 const Filter = styled.div`
   display: flex;
+  flex-wrap: wrap;
   
 `
 const FilterText = styled.p`
   padding-right: 10px;
   font-weight: 600;
+  ${mobile({   
+        marginBottom: "10px"
+    })}
 `
 const Select = styled.select`
   margin-right: 10px;

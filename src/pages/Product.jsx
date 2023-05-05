@@ -5,8 +5,13 @@ import NewsLetter from '../components/NewsLetter'
 import Footer from '../components/Footer'
 import styled from 'styled-components'
 import { Add, Remove } from '@mui/icons-material'
+import { mobile } from '../responsive'
 const Wrapper = styled.div`
     display: flex;
+    
+    ${mobile({   
+        flexDirection: "column"
+    })}
 `
 const Title = styled.h1`
     font-weight: 200;
@@ -15,21 +20,32 @@ const Title = styled.h1`
 const ImgContainer = styled.div`
     flex: 1;
     margin: 50px;
-    
+    ${mobile({   
+        margin: "20px"
+    })}
 `
 const Image = styled.img`
     height: 90vh;
     width: 100%;
     object-fit: cover;
+    ${mobile({   
+        height: "400px"
+    })}
 `
 const InfoContainer = styled.div`
     flex: 1;
     width: 20%;
     margin: 50px 0;
     padding-right: 100px;
+    ${mobile({   
+        padding: "30px",
+        width: "80%",
+        margin: 0
+    })}
 `
 const Desc = styled.p`
     margin: 20px 0;
+
 `
 const Price = styled.h3`
     font-weight: 400;

@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { mobile } from '../responsive'
 
 const Container = styled.div`
     background-color: teal;
@@ -8,7 +9,7 @@ const Container = styled.div`
     color: white;
     padding-top: 5px;
     padding-bottom: 5px;
-    
+    ${mobile({fontSize: "14px"})}
 `
 
 const Announcement = () => {
