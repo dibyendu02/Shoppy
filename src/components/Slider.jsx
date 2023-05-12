@@ -4,6 +4,7 @@ import ArrowLeftTwoToneIcon from '@mui/icons-material/ArrowLeftTwoTone';
 import ArrowRightTwoToneIcon from '@mui/icons-material/ArrowRightTwoTone';
 import { sliderItems } from '../data';
 import { mobile } from '../responsive';
+import { useNavigate } from 'react-router-dom';
 
 const Container = styled.div`
     width: 100%;
@@ -84,6 +85,10 @@ const Slider = () => {
             setSlideIndex(slideIndex <2 ? slideIndex+1 : 0);
         }
     }
+    const navigate = useNavigate();
+    const handlingShopButton = () => {
+        navigate("/productlist");
+    }
   return (
     <Container>
         <Arrow direction="left" onClick={() => handleClick("left")}>
@@ -99,7 +104,7 @@ const Slider = () => {
                 <InfoContainer>
                     <Title>{items.title}</Title>
                     <Description>{items.desc}</Description>
-                    <Button>SHOP NOW</Button>
+                    <Button onClick={handlingShopButton}>SHOP NOW</Button>
                 </InfoContainer>
                 </Slide>
             ))}

@@ -2,6 +2,7 @@ import { FavoriteOutlined, SearchOutlined, ShoppingCartOutlined } from '@mui/ico
 import React from 'react'
 import styled from 'styled-components'
 import { popularProducts } from '../data'
+import { useNavigate } from 'react-router-dom'
 
 const Container = styled.div`
     display: flex;
@@ -58,10 +59,15 @@ const Img = styled.img`
 `
 
 const Products = () => {
-  return (
+
+    const navigate = useNavigate();
+    const handlingProductButton = () => {
+        navigate("/product");
+    }
+    return (
     <Container>
         {popularProducts.map((item) => (
-            <ProductCard>
+            <ProductCard onClick={handlingProductButton}>
                 <Img src={item.img} />
                 <Info>
                     <Icon><ShoppingCartOutlined/></Icon>
