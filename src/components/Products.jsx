@@ -1,5 +1,5 @@
 import { FavoriteOutlined, SearchOutlined, ShoppingCartOutlined } from '@mui/icons-material'
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { popularProducts } from '../data'
 import { useNavigate } from 'react-router-dom'
@@ -59,7 +59,6 @@ const Img = styled.img`
 `
 
 const Products = () => {
-
     const navigate = useNavigate();
     const handlingProductButton = () => {
         navigate("/product");

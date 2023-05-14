@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import Announcement from '../components/Announcement'
 import Products from '../components/Products'
@@ -36,6 +36,10 @@ const Select = styled.select`
 const Option = styled.option``
 
 const ProductList = () => {
+  useEffect(() => {
+    window. scrollTo(0, 0);
+    console.log("sdf");
+  },[])
   return (
     <div>
       <Navbar/>

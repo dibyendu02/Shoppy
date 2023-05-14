@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import Announcement from '../components/Announcement'
 import NewsLetter from '../components/NewsLetter'
@@ -106,6 +106,10 @@ const Button = styled.button`
 `
 
 const Product = () => {
+    useEffect(() => {
+        window. scrollTo(0, 0);
+        console.log("sdf");
+    },[])
   return (
     <div>
         <Navbar/>

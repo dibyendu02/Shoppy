@@ -53,7 +53,7 @@ const Input = styled.input`
 const Mid = styled.div`
     flex: 1;
     text-align: center;
-    
+    cursor: pointer;
 `
 const Logo = styled.h1`
     font-weight: bold;
@@ -76,6 +76,9 @@ const MenuItem = styled.button`
 const Navbar = () => {
 
     const navigate = useNavigate();
+    const handlingIconButton = () => {
+        navigate("/");
+    }
     const handlingRegisterButton = () => {
         navigate("/register");
     }
@@ -94,7 +97,7 @@ const Navbar = () => {
                     <SearchIcon style={{color: "gray", fontSize: "16px"}}/>
                 </SearchContainer>
             </Left>
-            <Mid><Logo>SHOPPY.</Logo></Mid>
+            <Mid onClick={handlingIconButton}><Logo>SHOPPY.</Logo></Mid>
             <Right>
                 <MenuItem onClick={handlingRegisterButton}>REGISTER</MenuItem>
                 <MenuItem onClick={handlingLoginButton}>SIGN IN</MenuItem>
