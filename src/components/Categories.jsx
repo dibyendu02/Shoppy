@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { categories } from '../data'
 import { mobile } from '../responsive'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 
 const Container = styled.div`
@@ -64,18 +64,18 @@ const Button = styled.button`
 `
 const Categories = () => {
     const navigate = useNavigate();
-    const handlingShopButton = () => {
-        navigate("/productlist");
-    }
+    
   return (
     <Container>
         {categories.map((item) => (
             <CategoryCard>
+            <Link to={`products/${item.cat}`}>
                 <CategoryImg src={item.img}/>
                 <Info>
                     <Title>{item.title}</Title>
-                    <Button onClick={handlingShopButton}>SHOP NOW</Button>
+                    <Button>SHOP NOW</Button>
                 </Info>
+            </Link>
             </CategoryCard>
         ))}
     </Container>
