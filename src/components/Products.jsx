@@ -1,8 +1,9 @@
 import { FavoriteOutlined, SearchOutlined, ShoppingCartOutlined } from '@mui/icons-material'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { popularProducts } from '../data'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import axios from "axios";
 
 const Container = styled.div`
     display: flex;
@@ -58,23 +59,82 @@ const Img = styled.img`
     
 `
 
-const Products = () => {
+const Products = ({cat,filters,sort}) => {
+    const[products,setProducts] = useState([]);
+    const[filteredProducts,setFilteredProducts] = useState([]);
+    console.log(cat,filters,sort)
     const navigate = useNavigate();
-    const handlingProductButton = () => {
-        navigate("/product");
-    }
+    useEffect(() => {
+        const getProducts = async () =>{
+            try{
+                const res = await axios.get(cat ? `http://localhost:5000/api/products?category=${cat}`
+                : "http://localhost:5000/api/products");
+                setProducts(res.data);
+                console.log(products)
+            }catch(err){}
+        };
+        getProducts();
+    }, [cat]);
+
+    useEffect(() => {
+        cat && 
+        setFilteredProducts(
+            products.filter((item) =>
+            Object.entries(filters).every(([key, value]) =>
+                item[key].includes(value)
+            )
+            )
+        );
+    },[products,cat,filters])
+    useEffect(() =>{
+        if( sort === "newest"){
+            setFilteredProducts((prev) => 
+            [...prev].sort((a,b) => a.createdAt - b.createdAt)
+            );
+        } else if( sort === "asc"){
+            setFilteredProducts((prev) => 
+            [...prev].sort((a,b) => a.price - b.price)
+            );
+        } else{
+            setFilteredProducts((prev) => 
+            [...prev].sort((a,b) => b.price - a.price)
+            );
+        }
+    },[sort])
+
     return (
     <Container>
-        {popularProducts.map((item) => (
-            <ProductCard onClick={handlingProductButton}>
+        {cat ? filteredProducts.map((item) => (
+            <ProductCard>
                 <Img src={item.img} />
                 <Info>
                     <Icon><ShoppingCartOutlined/></Icon>
-                    <Icon><SearchOutlined/></Icon>
+                    <Icon>
+                    <Link to={`/product/${item._id}`}>
+                        <SearchOutlined/>
+                    </Link>
+                    </Icon>
                     <Icon><FavoriteOutlined/></Icon>                
                 </Info>
             </ProductCard>
-        ))}
+        ))
+        : products.slice(0,4).map((item) => (
+            
+            <ProductCard>
+                <Img src={item.img} />
+                <Info>
+                    <Icon><ShoppingCartOutlined/></Icon>
+                    <Icon>
+                    <Link to={`/product/${item._id}`}>
+                        <SearchOutlined/>
+                    </Link>
+                    </Icon>
+                    <Icon><FavoriteOutlined/></Icon>                
+                </Info>
+            </ProductCard>
+            
+        ))
+        }
     </Container>
   )
 }
