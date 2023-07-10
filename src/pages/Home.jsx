@@ -13,7 +13,6 @@ import Footer from '../components/Footer'
 const Home = () => {
   useEffect(() => {
     window. scrollTo(0, 0);
-    console.log("sdf");
   },[])
   return (
     <div>
