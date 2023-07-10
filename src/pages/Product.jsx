@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from '../components/Navbar'
 import Announcement from '../components/Announcement'
 import NewsLetter from '../components/NewsLetter'
@@ -6,6 +6,8 @@ import Footer from '../components/Footer'
 import styled from 'styled-components'
 import { Add, Remove } from '@mui/icons-material'
 import { mobile } from '../responsive'
+import { useLocation } from 'react-router-dom'
+import axios from 'axios'
 const Wrapper = styled.div`
     display: flex;
     
@@ -71,6 +73,7 @@ const FilterColor = styled.div`
     margin: 2px;
     border-radius: 50%;
     cursor: pointer;
+    border: 1px solid black;
 `
 const Select = styled.select`
   margin-right: 10px;
@@ -108,50 +111,73 @@ const Button = styled.button`
 const Product = () => {
     useEffect(() => {
         window. scrollTo(0, 0);
-        console.log("sdf");
     },[])
+
+    const location = useLocation();
+    const [quantity, setQuantity] = useState(1);
+    const [product, setProduct] = useState([]);
+    const id =  location.pathname.split("/")[2];
+    console.log(id)
+    useEffect(() => {
+        const getProduct = async () =>{
+            try{
+                const res = await axios.get(`http://localhost:5000/api/products/find/`+id);
+                setProduct(res.data);
+                console.log(product)
+            }catch(err){}
+        };
+        getProduct();
+    }, [id]);
+    const handleQuantity = (type) => {
+        if(type === "dec"){
+            if(quantity>1) setQuantity(quantity-1);
+        }
+        else{
+            setQuantity(quantity+1);
+        }
+    }
   return (
     <div>
         <Navbar/>
         <Announcement/>
         <Wrapper>
             <ImgContainer>
-                <Image src="https://i.ibb.co/S6qMxwr/jean.jpg" />
+            <Image src={product.img} />
             </ImgContainer>
             <InfoContainer>
-                <Title>Denim Jumpsuit</Title>
+                <Title>{product.title}</Title>
                 <Desc>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-                    venenatis, dolor in finibus malesuada, lectus ipsum porta nunc, at
-                    iaculis arcu nisi sed mauris. Nulla fermentum vestibulum ex, eget
-                    tristique tortor pretium ut. Curabitur elit justo, consequat id
-                    condimentum ac, volutpat ornare.
+                    {product.desc}
                 </Desc>
-                <Price>$ 20</Price>
+                <Price>₹ {product.price}</Price>
                 <FilterContainer>
                     <Filter>
                         <FilterText>Color</FilterText>
                         
-                        <FilterColor color="blue"/>
-                        <FilterColor color="black"/>
-                        <FilterColor color="grey"/>
+                        {/* {product.color?.map((c) => (
+                                <FilterColor color={c} key={c}/>
+                        ))} */}
+                        <FilterColor color={product.color}/>
+                        
                         
                     </Filter>
                     <Filter>
                         <FilterText>Size</FilterText>
                         <Select>
-                            <Option>XS</Option>
-                            <Option>S</Option>
-                            <Option>L</Option>
-                            <Option>XL</Option>
+                            {product.size?.map((s) => (
+                                <Option key={s}>{s}</Option>
+                                
+                            ))}
+                            
+                            
                         </Select>
                     </Filter>
                 </FilterContainer>
                 <CartContainer>
                 <Counter>
-                    <Remove/>
-                    <Amount>1</Amount>
-                    <Add/>
+                    <Remove onClick={()=>handleQuantity("dec")} />
+                    <Amount>{quantity}</Amount>
+                    <Add onClick={()=>handleQuantity("inc")} />
                 </Counter>
                 <Button>ADD TO CART</Button>
             </CartContainer>
