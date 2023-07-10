@@ -4,25 +4,23 @@ import Product from "./pages/Product";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Cart from "./pages/Cart";
-import { Route, Router, Routes } from "react-router-dom";
-
-
+import { Navigate, Route, Router, Routes, redirect, useNavigate } from "react-router-dom";
 
 
 function App() {
+  const navigate = useNavigate();
+  const user = true;
+
   return (
-    <div className="App">
-    
-      <Routes>
-        <Route path="/" element={<Home/>} />
-        <Route path="/register" element={<Register/>} />
-        <Route path="/login" element={<Login/>} />
-        <Route path="/productlist" element={<ProductList/>}/>
-        <Route path="/cart" element={<Cart/>} />
-        <Route path="/product" element={<Product/>} />
-      </Routes>
-    
-    </div>
+    <Routes>
+      <Route path="/" element={<Home/>} />
+      <Route path="/login" element={<Login/>} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/products/:category" element={<ProductList/>}/>
+      <Route path="/product/:id" element={<Product/>}/>
+      <Route path="/cart" element={<Cart/>} />
+      
+    </Routes>
   );
 }
 
