@@ -8,6 +8,9 @@ import { Add, Remove } from '@mui/icons-material'
 import { mobile } from '../responsive'
 import { useLocation } from 'react-router-dom'
 import axios from 'axios'
+import { useDispatch } from 'react-redux'
+import { addProduct } from '../redux/cartRedux'
+import { publicRequest } from '../requestMethods'
 const Wrapper = styled.div`
     display: flex;
     
@@ -112,22 +115,34 @@ const Product = () => {
     useEffect(() => {
         window. scrollTo(0, 0);
     },[])
-
+    const dispatch = useDispatch();
     const location = useLocation();
     const [quantity, setQuantity] = useState(1);
     const [product, setProduct] = useState([]);
+    const [color,setColor] = useState();
+    //console.log(color)
+    // const demo = product.size.slice(0,1);
+    // console.log("demo " + demo)
+    const [size,setSize] = useState();
     const id =  location.pathname.split("/")[2];
-    console.log(id)
+    //console.log(id)
     useEffect(() => {
         const getProduct = async () =>{
             try{
-                const res = await axios.get(`http://localhost:5000/api/products/find/`+id);
+                const res = await publicRequest.get("/products/find/" + id);
                 setProduct(res.data);
-                console.log(product)
+                setSize(res.data.size[0]);
+                console.log("size " + size)
+                //console.log(product)
             }catch(err){}
         };
         getProduct();
     }, [id]);
+
+    const handleCartClick = () => {
+    dispatch(addProduct({...product, quantity, size, color}));
+    }
+
     const handleQuantity = (type) => {
         if(type === "dec"){
             if(quantity>1) setQuantity(quantity-1);
@@ -154,16 +169,16 @@ const Product = () => {
                     <Filter>
                         <FilterText>Color</FilterText>
                         
-                        {/* {product.color?.map((c) => (
-                                <FilterColor color={c} key={c}/>
-                        ))} */}
-                        <FilterColor color={product.color}/>
+                        {product.color?.map((c) => (
+                                <FilterColor color={c} key={c} onClick={() => setColor(c)}/>
+                        ))}
+                        
                         
                         
                     </Filter>
                     <Filter>
                         <FilterText>Size</FilterText>
-                        <Select>
+                        <Select onChange={(e) => setSize(e.target.value)}>
                             {product.size?.map((s) => (
                                 <Option key={s}>{s}</Option>
                                 
@@ -179,7 +194,7 @@ const Product = () => {
                     <Amount>{quantity}</Amount>
                     <Add onClick={()=>handleQuantity("inc")} />
                 </Counter>
-                <Button>ADD TO CART</Button>
+                <Button onClick={handleCartClick}>ADD TO CART</Button>
             </CartContainer>
             </InfoContainer>
             

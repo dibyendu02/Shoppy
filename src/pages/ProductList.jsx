@@ -47,10 +47,10 @@ const ProductList = () => {
       [event.target.name] : event.target.value,
     })
   }
-  // console.log(cat,filters,sort);
-  // useEffect(() => {
-  //   window. scrollTo(0, 0);
-  // },[])
+  
+  useEffect(() => {
+    window. scrollTo(0, 0);
+  },[])
   return (
     <div>
       <Navbar/>

@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 import { mobile } from '../responsive';
+import { Navigate } from 'react-router-dom';
 
 const Container = styled.div`
   width: 100vw;
@@ -63,10 +64,11 @@ const Button = styled.button`
 `
 
 
-const Register = () => {
+const Register = ({user}) => {
   return (
     
         <Container>
+        {user && <Navigate to="/" />}
         <Wrapper>
             <Title>CREATE AN ACCOUNT</Title>
             <Form>
