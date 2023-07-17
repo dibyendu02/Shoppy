@@ -284,7 +284,7 @@ const Cart = () => {
             stripeKey={KEY}
             >
               <Button disabled={isDisabled}>CHECKOUT NOW</Button>
-              <Warning>Please Log In first</Warning>
+              {!user && <Warning>Please Log In first</Warning>}
             </StripeCheckout> 
           </Summary>
         </Bottom>
