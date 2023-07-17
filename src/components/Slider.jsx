@@ -54,10 +54,14 @@ const Wrapper = styled.div`
 `
 const ImageContainer = styled.div`
     flex: 1;
-    
+    border: 1px solid black;
+    margin: 10px;
 `
 const Image = styled.img`
     height: 80vh;
+    width: 95%;
+    object-fit: cover;
+    padding: 10px;
 `
 const InfoContainer = styled.div`
     flex: 1;
