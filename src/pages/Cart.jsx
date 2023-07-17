@@ -61,8 +61,11 @@ const Bottom = styled.div`
 
 const Info = styled.div`
   flex: 3;
+  //background-color: red;
+  
   ${mobile({   
-        width: "50vw"
+        maxWidth: "90vw",
+        
     })}
 `;
 
@@ -89,6 +92,8 @@ const Details = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  //background-color: black;
+  //width: 30%;
   
 `;
 
@@ -211,9 +216,9 @@ const Cart = () => {
                   <ProductName>
                     <b>Product:</b> {product.title}
                   </ProductName>
-                  <ProductId>
+                  {/* <ProductId>
                     <b>ID:</b> {product._id}
-                  </ProductId>
+                  </ProductId> */}
                   <ProductColor color={product.color} />
                   <ProductSize>
                     <b>Size:</b> {product.size}
