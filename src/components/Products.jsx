@@ -62,13 +62,13 @@ const Img = styled.img`
 const Products = ({cat,filters,sort}) => {
     const[products,setProducts] = useState([]);
     const[filteredProducts,setFilteredProducts] = useState([]);
-    console.log(cat,filters,sort)
+    //console.log(cat,filters,sort)
     const navigate = useNavigate();
     useEffect(() => {
         const getProducts = async () =>{
             try{
-                const res = await axios.get(cat ? `http://localhost:5000/api/products?category=${cat}`
-                : "http://localhost:5000/api/products");
+                const res = await axios.get(cat ? `https://shoppy-api-lq1j.onrender.com/api/products?category=${cat}`
+                : "https://shoppy-api-lq1j.onrender.com/api/products");
                 setProducts(res.data);
                 console.log(products)
             }catch(err){}
@@ -105,7 +105,7 @@ const Products = ({cat,filters,sort}) => {
     return (
     <Container>
         {cat ? filteredProducts.map((item) => (
-            <ProductCard>
+            <ProductCard key={item._id}>
                 <Img src={item.img} />
                 <Info>
                     <Icon><ShoppingCartOutlined/></Icon>
@@ -118,7 +118,7 @@ const Products = ({cat,filters,sort}) => {
                 </Info>
             </ProductCard>
         ))
-        : products.slice(0,4).map((item) => (
+        : products.slice(0,8).map((item) => (
             
             <ProductCard>
                 <Img src={item.img} />
