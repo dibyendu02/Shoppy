@@ -89,7 +89,7 @@ const Navbar = () => {
     const dispatch = useDispatch();
     const quantity = useSelector(state=>state.cart.quantity);
     const user = useSelector((state) => state.user.currentUser );
-    console.log(user)
+    //console.log(user)
     //console.log(products);
     const navigate = useNavigate();
     const handlingIconButton = () => {

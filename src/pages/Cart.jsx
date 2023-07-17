@@ -7,6 +7,7 @@ import { mobile } from '../responsive';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import StripeCheckout from "react-stripe-checkout"
+import { useNavigate } from 'react-router-dom';
 
 const KEY = process.env.REACT_APP_STRIPE;
 
@@ -181,7 +182,15 @@ const Button = styled.button`
   background-color: black;
   color: white;
   font-weight: 600;
+  &:disabled{
+    background-color: gray;
+  }
 `;
+
+const Warning = styled.span`
+  color: red;
+  font-size: 15px;
+`
 
 const Cart = () => {
   const cart = useSelector(state=>state.cart);
@@ -189,7 +198,16 @@ const Cart = () => {
   const onToken = (token) => {
     setStripeToken(token);
   }
-  console.log(stripeToken)
+  //console.log(stripeToken)
+  const navigate = useNavigate();
+  const shoppingButton = () => {
+    navigate("/");
+  }
+
+  let isDisabled = true;
+  const user = useSelector((state) => state.user.currentUser );
+  user ? isDisabled=false:isDisabled = true;
+
   useEffect(() => {
     window. scrollTo(0, 0);
 },[])
@@ -200,7 +218,7 @@ const Cart = () => {
       <Wrapper>
         <Title>YOUR BAG</Title>
         <Top>
-          <TopButton>CONTINUE SHOPPING</TopButton>
+          <TopButton onClick={shoppingButton}>CONTINUE SHOPPING</TopButton>
           <TopTexts>
             <TopText>Shopping Bag({cart.quantity})</TopText>
             <TopText>Your Wishlist (0)</TopText>
@@ -265,7 +283,8 @@ const Cart = () => {
             token={onToken}
             stripeKey={KEY}
             >
-              <Button>CHECKOUT NOW</Button>
+              <Button disabled={isDisabled}>CHECKOUT NOW</Button>
+              <Warning>Please Log In first</Warning>
             </StripeCheckout> 
           </Summary>
         </Bottom>
