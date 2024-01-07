@@ -16,13 +16,16 @@ const Home = () => {
   },[])
   return (
     <div>
-        <Announcement/>
-        <Navbar/>
-        <Slider/>
-        <Categories/>
-        <Products/>
-        <NewsLetter/>
-        <Footer/>
+        <div style={{position: "fixed", zIndex: "1"}}><Announcement/></div>
+        <div>
+          <Navbar/>
+          <Slider/>
+          <Categories/>
+          <Products/>
+          <NewsLetter/>
+          <Footer/>
+        </div>
+        
     </div>
   )
 }

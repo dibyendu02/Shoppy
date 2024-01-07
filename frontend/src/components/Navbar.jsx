@@ -12,6 +12,7 @@ const Container = styled.div`
     /* height: 40px; */
     /* background-color: black;
     color: white; */
+    margin-top: 20px;
     padding: 10px;
     align-items: center;
     display: flex;

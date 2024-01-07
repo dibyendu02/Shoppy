@@ -3,6 +3,10 @@ import styled from 'styled-components'
 import { mobile } from '../responsive'
 
 const Container = styled.div`
+    position: fixed;
+    top: 0;
+    margin-bottom: 40px;
+    width: 100vw;
     background-color: teal;
     display: flex;
     justify-content: center;
