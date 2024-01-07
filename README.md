@@ -5,7 +5,7 @@
 <div align="center">
 
   <a href="https://github.com/dibyendu02/Shoppy">
-    <img src="./Frontend/public/carts.png" alt="Logo" width="92" height="92">
+    <img src="./frontend/public/carts.png" alt="Logo" width="92" height="92">
   </a>
 
 <h3 align="center">Shoppy</h3>
@@ -129,7 +129,7 @@ To run the application locally, follow these steps:
    ```
 
    ```bash
-   cd rontend && npm install && npm start
+   cd frontend && npm install && npm start
    ```
 
 <!-- - or Use Docker Compose
