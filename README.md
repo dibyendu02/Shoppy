@@ -4,8 +4,8 @@
 <br />
 <div align="center">
 
-  <a href="https://github.com/dibyendu02/Keeper">
-    <img src="./Frontend/public/contacts.png" alt="Logo" width="92" height="92">
+  <a href="https://github.com/dibyendu02/Shoppy">
+    <img src="./Frontend/public/carts.png" alt="Logo" width="92" height="92">
   </a>
 
 <h3 align="center">Shoppy</h3>
@@ -16,21 +16,22 @@
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 <p align="center">
-   A web platform to store all your contacts with the ease to call or whatsapp on one tap.
+   An e-commerce website where people can view different product listed and add them to cart and browse different categories
+
    <br />
-   <a href="https://github.com/dibyendu02/keeper"><strong>Explore Code »</strong></a>
+   <a href="https://github.com/dibyendu02/Shoppy"><strong>Explore Code »</strong></a>
    <br />
    <br />
-   <a href="https://keeperlive.vercel.app/" target="_blank" rel="noopener noreferrer" >View Demo</a>
+   <a href="https://shoppyonline.vercel.app/" target="_blank" rel="noopener noreferrer" >View Demo</a>
    ·
-   <a href="https://github.com/dibyendu02/keeper/issues">Report Bug</a>
+   <a href="https://github.com/dibyendu02/Shoppy/issues">Report Bug</a>
    ·
-   <a href="https://github.com/dibyendu02/keeper/
+   <a href="https://github.com/dibyendu02/Shoppy/
 issues">Request Feature</a>
  </p>
 </div>
 
-CryptoConvert is a web application that enables users to convert amounts various cryptocurrencies to fiat currencies. The application utilizes real-time exchange rates obtained from popular cryptocurrency data providers to perform accurate and up-to-date conversions.
+Shoppy is a web application that enables users to view different categorized product, add to cart facility and view each product on a specific single page with the authentication for each users.
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -69,47 +70,35 @@ CryptoConvert is a web application that enables users to convert amounts various
 
 ### Features
 
-- Create, Delete, Update a contact with Name, Phone number and Email Id.
-- Directly forward to dialing screen on one tap.
-- Directly forward to whatsapp chat.
-- Write an email on just a click.
+- Browse different products on differnt categorized pages
+- Add to cart whichever users like
+- Get detailed information about the product user love on a dedicated single page
 
 ### Technologies Used
 
 - **Backend**: Node.js, Express.js
-- **Frontend**: React
+- **Frontend**: React, Styled Components
 
 ## Folder Structure
 
 The project follows a structured organization with separate backend and frontend directories:
 
-- `Backend/`: Contains the Node.js backend.
-- `Frontend/`: Contains the React frontend.
+- `backend/`: Contains the Node.js backend.
+- `frontend/`: Contains the React frontend.
 
-<!-- ### Packages I Used
-
-1. "tailwindcss"
-2. "vite"
-3. "jest"
-4. "nodemon"
-5. "supertest"
-6. "lucid-react"
-7. "shadcn/ui" -->
 
 ### Screenshots
 
-<!-- <details>
+<details>
    <summary><strong>Show</strong> </summary>
 
-  <div style="text-align: center;"> <strong><i>Mobile View</i></strong></div>
 
-![Mobile View](screenshots/phone.png "Mobile View")
 
-  <div style="text-align: center;"> <strong><i>Desktop View</i></strong></div>
+![Desktop View](screenshots/shoppy1.png )
+![Desktop View](screenshots/shoppy2.png )
+![Desktop View](screenshots/shoppy3.png )
 
-![Desktop View](screenshots/desktop.png "Desktop View")
-
-</details> -->
+</details>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -130,17 +119,17 @@ To run the application locally, follow these steps:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/dibyendu02/Keeper.git
+   git clone https://github.com/dibyendu02/Shoppy.git
    ```
 
 2. Run both command separately to setup the codebase:
 
    ```bash
-   cd Backend && npm install && npm run dev
+   cd backend && npm install && npm run dev
    ```
 
    ```bash
-   cd Frontend && npm install && npm start
+   cd rontend && npm install && npm start
    ```
 
 <!-- - or Use Docker Compose
@@ -178,7 +167,7 @@ Don't forget to give the project a star! Thanks again!
 5. Open a Pull Request
 6. Wait for review
 
-See the [open issues](https://github.com/dibyendu02/Keeper/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/dibyendu02/Shoppy/issues) for a full list of proposed features (and known issues).
 
 <!-- CONTACT -->
 
@@ -186,7 +175,7 @@ See the [open issues](https://github.com/dibyendu02/Keeper/issues) for a full li
 
 Your Name - Dibyendu Das [@dibyendu02](https://twitter.com/dasdibyenduu) - [get2dibyendu@gmail.com](mailto:get2dibyendu@gmail.com)
 
-Project Link: [https://github.com/dibyendu02/Keeper](https://github.com/dibyendu02/Keeper)
+Project Link: [https://github.com/dibyendu02/Shoppy](https://github.com/dibyendu02/Shoppy)
 
 **Thanks for visiting my project. If you like it, please give it a star. It will help me a lot. Thanks again!**
 
@@ -195,12 +184,12 @@ Project Link: [https://github.com/dibyendu02/Keeper](https://github.com/dibyendu
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[forks-shield]: https://img.shields.io/github/forks/dibyendu02/Keeper?style=for-the-badge
-[forks-url]: https://github.com/dibyendu02/Keeper/fork
+[forks-shield]: https://img.shields.io/github/forks/dibyendu02/Shoppy?style=for-the-badge
+[forks-url]: https://github.com/dibyendu02/Shoppy/fork
 [stars-shield]: https://img.shields.io/github/stars/dibyendu02/Keeper?style=for-the-badge
-[stars-url]: https://github.com/dibyendu02/Keeper/stargazers
-[issues-shield]: https://img.shields.io/github/issues/dibyendu02/Keeper?style=for-the-badge
-[issues-url]: https://github.com/dibyendu02/Keeper/issues
+[stars-url]: https://github.com/dibyendu02/Shoppy/stargazers
+[issues-shield]: https://img.shields.io/github/issues/dibyendu02/Shoppy?style=for-the-badge
+[issues-url]: https://github.com/dibyendu02/Shoppy/issues
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/dibyendu02
 [React.dev]: https://img.shields.io/badge/React-2496ed?style=for-the-badge&logo=react&logoColor=white
